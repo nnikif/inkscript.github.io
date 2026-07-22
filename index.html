@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="A beautifully focused app for iPhone, iPad, and Mac.">
     <meta name="theme-color" content="#f5f3ee">
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
     <title>inkScript — Make space for your words</title>
     <style>
       :root {
@@ -278,6 +280,7 @@
       .nav-inner { min-height: 58px; }
       .brand { font-family: Georgia, "Times New Roman", serif; font-size: 27px; font-weight: 400; letter-spacing: -.035em; }
       .mark { width: 31px; height: 31px; border-radius: 3px; background: #382110; font-size: 19px; }
+      img.mark { display: block; object-fit: cover; }
       .nav-links { gap: 4px; }
       .nav-links a { padding: 20px 13px; color: #382110; font-size: 14px; font-weight: 400; }
       .nav-links a:hover { background: #382110; color: white; }
@@ -343,7 +346,7 @@
   <body>
     <nav class="nav" aria-label="Primary navigation">
       <div class="wrap nav-inner">
-        <div class="brand"><span class="mark">i</span> inkScript</div>
+        <div class="brand"><img class="mark" src="assets/inkscript-logo.jpg" alt="inkScript logo" width="31" height="31"> inkScript</div>
         <div class="nav-links">
           <a href="#features">Features</a>
           <a href="#screenshots">Screenshots</a>
@@ -356,18 +359,19 @@
     <main>
       <header class="hero wrap">
         <div class="eyebrow">Made for iPhone, iPad &amp; Mac</div>
-        <h1>Make space<br>for your <em>words.</em></h1>
+        <h1>With inkScript, you turn your e-book into a screen for a distraction-free writing application. </h1>
         <div class="hero-bottom">
-          <p class="hero-copy">A quiet, beautifully considered place for your ideas. Add a short description of your application and what makes it special.</p>
+          <p class="hero-copy">If you read books using your Kindle or a similar eInk device, you know how different it feels from looking at a screen of a phone or a computer. 
+But why just read, why not write? </p>
           <div class="actions">
             <a class="button primary" href="#download">Download on the App Store ↗</a>
-            <a class="button secondary" href="#screenshots">See it in action</a>
           </div>
         </div>
       </header>
 
       <section class="showcase wrap" aria-label="Application preview">
         <div class="stage">
+
           <div class="orb"></div>
           <div class="mac-frame" aria-hidden="true">
             <div class="screen">
