@@ -3,94 +3,448 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>inkScript Help</title>
+    <meta name="description" content="A beautifully focused app for iPhone, iPad, and Mac.">
+    <meta name="theme-color" content="#f5f3ee">
+    <title>inkScript — Make space for your words</title>
     <style>
+      :root {
+        --ink: #171714;
+        --muted: #6d6c64;
+        --paper: #f5f3ee;
+        --paper-deep: #eae7df;
+        --line: rgba(23, 23, 20, 0.12);
+        --accent: #ff6234;
+        --lime: #d8ff72;
+        --radius: 28px;
+      }
+
       * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body {
         margin: 0;
-        padding: 32px;
-        background: #fbfafc;
-        color: #1f1f24;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 18px;
-        line-height: 1.55;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+        -webkit-font-smoothing: antialiased;
       }
-      main {
-        max-width: 760px;
-        margin: 0 auto;
+      a { color: inherit; }
+      button, a { -webkit-tap-highlight-color: transparent; }
+
+      .wrap { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: color-mix(in srgb, var(--paper) 86%, transparent);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid transparent;
       }
-      h1 {
-        margin: 0 0 6px;
-        font-size: 42px;
-        line-height: 1.05;
+      .nav-inner {
+        min-height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
       }
-      h2 {
-        margin: 32px 0 8px;
-        font-size: 24px;
+      .brand { display: flex; align-items: center; gap: 11px; font-weight: 750; letter-spacing: -0.03em; }
+      .mark {
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        background: var(--ink);
+        color: white;
+        font-family: Georgia, serif;
+        font-size: 20px;
+        font-style: italic;
       }
-      p {
-        margin: 0 0 12px;
-      }
-      figure {
-        margin: 28px 0 34px;
-        padding: 0;
-      }
-      img {
-        display: block;
-        width: 100%;
-        max-width: 680px;
-        border: 1px solid #e1e1e6;
-        border-radius: 8px;
-        background: #f1f3f7;
-      }
+      .nav-links { display: flex; align-items: center; gap: 28px; }
+      .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 650; }
+      .nav-links a:hover { color: var(--ink); }
+      .nav-links .download { color: white; background: var(--ink); padding: 11px 17px; border-radius: 999px; }
+
+      .hero { padding: 86px 0 70px; overflow: hidden; }
       .eyebrow {
-        margin-bottom: 26px;
-        color: #6f7178;
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 25px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 720;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+      .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+      h1 {
+        max-width: 920px;
+        margin: 0;
+        font-size: clamp(66px, 9.7vw, 142px);
+        line-height: .84;
+        letter-spacing: -.075em;
+        font-weight: 780;
+      }
+      h1 em { color: var(--accent); font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
+      .hero-bottom {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: end;
+        margin-top: 54px;
+      }
+      .hero-copy { max-width: 490px; margin: 0; color: var(--muted); font-size: 20px; line-height: 1.5; letter-spacing: -.02em; }
+      .actions { display: flex; gap: 12px; justify-content: flex-end; flex-wrap: wrap; }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 54px;
+        padding: 0 23px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 15px;
         font-weight: 700;
+        transition: transform .2s ease, background .2s ease;
+      }
+      .button:hover { transform: translateY(-2px); }
+      .button.primary { background: var(--ink); color: white; border-color: var(--ink); }
+      .button.secondary:hover { background: white; }
+
+      .showcase { padding: 24px 0 120px; }
+      .stage {
+        position: relative;
+        min-height: 680px;
+        overflow: hidden;
+        border-radius: 42px;
+        background: var(--ink);
+        isolation: isolate;
+      }
+      .stage::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: radial-gradient(circle at 18% 10%, #4d4c44 0, transparent 30%), radial-gradient(circle at 85% 80%, #46291f 0, transparent 30%);
+      }
+      .orb { position: absolute; width: 330px; height: 330px; border-radius: 50%; background: var(--lime); right: 8%; top: 9%; filter: blur(1px); opacity: .95; }
+      .mac-frame {
+        position: absolute;
+        width: min(780px, 72%);
+        aspect-ratio: 1.55;
+        left: 8%;
+        top: 15%;
+        padding: 12px;
+        border-radius: 21px;
+        background: #d8d7d2;
+        box-shadow: 0 40px 90px rgba(0,0,0,.5);
+        transform: rotate(-5deg);
+      }
+      .screen {
+        height: 100%;
+        overflow: hidden;
+        border-radius: 12px;
+        background: #f7f4ec;
+        display: grid;
+        grid-template-columns: 28% 1fr;
+      }
+      .sidebar { border-right: 1px solid #dedbd3; padding: 28px 20px; color: #8b8981; font-size: 11px; }
+      .side-line { height: 8px; margin: 0 0 13px; border-radius: 4px; background: #dedbd4; }
+      .side-line:nth-child(2) { width: 75%; }
+      .side-line:nth-child(3) { width: 88%; }
+      .editor { padding: 11% 12%; }
+      .editor-label { color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: .1em; }
+      .editor h3 { margin: 17px 0 24px; font-family: Georgia, serif; font-size: clamp(27px, 4vw, 52px); font-weight: 400; letter-spacing: -.04em; }
+      .text-line { height: 8px; margin-bottom: 12px; border-radius: 4px; background: #d6d3cb; }
+      .text-line:nth-child(2n) { width: 89%; }
+      .text-line:nth-child(3n) { width: 74%; }
+      .phone-frame {
+        position: absolute;
+        width: min(245px, 26%);
+        aspect-ratio: .49;
+        right: 9%;
+        bottom: -6%;
+        padding: 9px;
+        border-radius: 38px;
+        background: #111;
+        border: 2px solid #4b4b48;
+        box-shadow: 0 38px 75px rgba(0,0,0,.55);
+        transform: rotate(7deg);
+      }
+      .phone-screen { height: 100%; padding: 55px 24px; border-radius: 28px; background: #ece8de; }
+      .phone-screen h3 { margin: 26px 0; font-family: Georgia, serif; font-size: 28px; font-weight: 400; }
+      .placeholder-note { position: absolute; left: 34px; bottom: 30px; color: #aaa89f; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+
+      .section { padding: 120px 0; border-top: 1px solid var(--line); }
+      .section-head { display: grid; grid-template-columns: .65fr 1.35fr; gap: 60px; margin-bottom: 75px; }
+      .kicker { margin: 5px 0 0; color: var(--muted); font-size: 13px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+      h2 { max-width: 780px; margin: 0; font-size: clamp(46px, 6.3vw, 82px); line-height: .98; letter-spacing: -.06em; }
+      .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+      .card { min-height: 320px; padding: 30px; border-radius: var(--radius); background: white; display: flex; flex-direction: column; justify-content: space-between; }
+      .card:nth-child(2) { background: var(--lime); }
+      .card:nth-child(3) { background: var(--paper-deep); }
+      .card-number { color: var(--muted); font-size: 12px; font-weight: 750; }
+      .card h3 { margin: 0 0 11px; font-size: 28px; letter-spacing: -.04em; }
+      .card p { margin: 0; color: #626159; line-height: 1.55; }
+
+      .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .shot {
+        position: relative;
+        min-height: 560px;
+        overflow: hidden;
+        padding: 30px;
+        border-radius: var(--radius);
+        background: #dfdcd4;
+      }
+      .shot:nth-child(2) { background: #ffc7b6; }
+      .shot-label { position: relative; z-index: 2; font-size: 13px; font-weight: 750; }
+      .shot-window {
+        position: absolute;
+        width: 78%;
+        height: 76%;
+        left: 11%;
+        top: 15%;
+        border: 9px solid #20201d;
+        border-radius: 28px 28px 0 0;
+        background: #f7f5ef;
+        box-shadow: 0 30px 60px rgba(0,0,0,.18);
+      }
+      .shot-window::after { content: "Add your screenshot"; position: absolute; inset: 0; display: grid; place-items: center; color: #9a9891; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+      .shot:nth-child(2) .shot-window { width: 48%; left: 26%; border-radius: 42px; }
+
+      .support-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+      .support-copy h2 { margin-bottom: 26px; }
+      .support-copy p { max-width: 510px; color: var(--muted); font-size: 18px; line-height: 1.6; }
+      .faq { border-top: 1px solid var(--line); }
+      details { border-bottom: 1px solid var(--line); }
+      summary { display: flex; justify-content: space-between; gap: 20px; padding: 25px 0; cursor: pointer; font-size: 18px; font-weight: 680; list-style: none; }
+      summary::-webkit-details-marker { display: none; }
+      summary::after { content: "+"; color: var(--muted); font-size: 22px; font-weight: 400; }
+      details[open] summary::after { content: "−"; }
+      details p { margin: -4px 44px 25px 0; color: var(--muted); line-height: 1.6; }
+
+      footer { padding: 70px 0 35px; background: var(--ink); color: white; }
+      .footer-main { display: flex; justify-content: space-between; gap: 40px; align-items: end; }
+      .footer-title { max-width: 660px; margin: 0; font-size: clamp(50px, 7vw, 94px); line-height: .93; letter-spacing: -.065em; }
+      .footer-links { display: flex; flex-direction: column; gap: 13px; text-align: right; }
+      .footer-links a { color: #b9b8b1; text-decoration: none; }
+      .footer-links a:hover { color: white; }
+      .footer-bottom { margin-top: 85px; padding-top: 24px; border-top: 1px solid #393935; display: flex; justify-content: space-between; gap: 20px; color: #777771; font-size: 12px; }
+
+      @media (max-width: 760px) {
+        .wrap { width: min(100% - 28px, 1180px); }
+        .nav-inner { min-height: 66px; }
+        .nav-links a:not(.download) { display: none; }
+        .hero { padding: 65px 0 48px; }
+        h1 { font-size: clamp(59px, 19vw, 94px); }
+        .hero-bottom, .section-head, .support-grid { grid-template-columns: 1fr; gap: 28px; }
+        .actions { justify-content: flex-start; }
+        .stage { min-height: 480px; border-radius: 28px; }
+        .mac-frame { width: 90%; left: 2%; top: 15%; }
+        .phone-frame { width: 32%; right: 6%; bottom: 2%; }
+        .orb { width: 190px; height: 190px; right: -3%; }
+        .placeholder-note { left: 22px; bottom: 18px; }
+        .section { padding: 82px 0; }
+        .section-head { margin-bottom: 42px; }
+        .cards, .gallery { grid-template-columns: 1fr; }
+        .card { min-height: 250px; }
+        .shot { min-height: 450px; }
+        .footer-main { align-items: start; flex-direction: column; }
+        .footer-links { text-align: left; }
+        .footer-bottom { margin-top: 55px; flex-direction: column; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .button { transition: none; }
+      }
+    </style>
+    <style>
+      /* Goodreads-inspired editorial theme */
+      :root {
+        --ink: #382110;
+        --muted: #767676;
+        --paper: #f4f1ea;
+        --paper-deep: #ebe7dc;
+        --line: #d8d0c4;
+        --accent: #409d69;
+        --lime: #d6e8d8;
+        --radius: 5px;
+      }
+      body { background: #fff; color: var(--ink); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+      .wrap { width: min(1100px, calc(100% - 36px)); }
+      .nav { position: static; background: #f4f1ea; border-bottom: 1px solid #d6d0c4; box-shadow: 0 1px 2px rgba(0,0,0,.08); backdrop-filter: none; }
+      .nav-inner { min-height: 58px; }
+      .brand { font-family: Georgia, "Times New Roman", serif; font-size: 27px; font-weight: 400; letter-spacing: -.035em; }
+      .mark { width: 31px; height: 31px; border-radius: 3px; background: #382110; font-size: 19px; }
+      .nav-links { gap: 4px; }
+      .nav-links a { padding: 20px 13px; color: #382110; font-size: 14px; font-weight: 400; }
+      .nav-links a:hover { background: #382110; color: white; }
+      .nav-links .download { margin-left: 8px; padding: 8px 14px; border-radius: 3px; background: #409d69; color: white; }
+      .hero { padding: 64px 0 54px; overflow: visible; }
+      .eyebrow { margin-bottom: 16px; color: #8a7968; font-size: 12px; }
+      .eyebrow::before { background: #409d69; }
+      h1 { max-width: 780px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(50px, 7vw, 82px); line-height: 1.03; letter-spacing: -.045em; font-weight: 400; }
+      h1 br { display: none; }
+      h1 em { color: #382110; }
+      .hero-bottom { grid-template-columns: 1.25fr .75fr; margin-top: 28px; }
+      .hero-copy { color: #66594d; font-family: Georgia, "Times New Roman", serif; font-size: 19px; }
+      .button { min-height: 40px; padding: 0 17px; border: 1px solid #ccc3b5; border-radius: 3px; font-size: 14px; font-weight: 400; }
+      .button.primary { background: #409d69; border-color: #388c5d; color: white; }
+      .button.secondary { background: #f7f5f0; }
+      .button:hover { transform: none; filter: brightness(.96); }
+      .showcase { padding: 10px 0 70px; }
+      .stage { min-height: 500px; border: 1px solid #c9c0b2; border-radius: 5px; background: #e9e4d8; }
+      .stage::before { background: linear-gradient(120deg, #f4f1ea, #dcd5c6); }
+      .orb { width: 240px; height: 240px; background: #c9dfcc; opacity: .8; }
+      .mac-frame { top: 11%; border-radius: 8px; background: #aaa49c; box-shadow: 0 15px 35px rgba(56,33,16,.25); }
+      .screen { border-radius: 3px; }
+      .phone-frame { border-radius: 25px; box-shadow: 0 15px 35px rgba(56,33,16,.28); }
+      .phone-screen { border-radius: 18px; }
+      .placeholder-note { color: #786c61; }
+      .section { padding: 70px 0; border-top: 1px solid #ded8ce; }
+      .section:nth-of-type(even) { background: #f4f1ea; }
+      .section-head { grid-template-columns: 180px 1fr; gap: 35px; margin-bottom: 38px; }
+      .kicker { color: #8a7968; }
+      h2, .footer-title { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
+      h2 { max-width: 690px; font-size: clamp(36px, 5vw, 54px); line-height: 1.08; letter-spacing: -.035em; }
+      .cards { gap: 14px; }
+      .card { min-height: 240px; padding: 24px; border: 1px solid #d8d0c4; border-radius: 5px; background: #fff; }
+      .card:nth-child(2), .card:nth-child(3) { background: #fff; }
+      .card h3 { font-family: Georgia, "Times New Roman", serif; font-size: 24px; font-weight: 400; }
+      .card p { color: #66594d; font-size: 14px; }
+      .gallery { gap: 18px; }
+      .shot { min-height: 470px; border: 1px solid #cbc2b5; border-radius: 5px; background: #ebe7dc; }
+      .shot:nth-child(2) { background: #e3ddd1; }
+      .shot-window { border-width: 7px; border-color: #574b40; border-radius: 8px 8px 0 0; }
+      .shot:nth-child(2) .shot-window { border-radius: 24px; }
+      .support-grid { gap: 70px; }
+      .support-copy p, details p { color: #66594d; }
+      .faq { border-top-color: #d8d0c4; }
+      details { border-bottom-color: #d8d0c4; }
+      summary { color: #382110; font-family: Georgia, "Times New Roman", serif; }
+      footer { padding: 48px 0 25px; background: #f4f1ea; color: #382110; border-top: 1px solid #d6d0c4; }
+      .footer-title { max-width: 600px; font-size: clamp(38px, 5vw, 60px); line-height: 1.05; letter-spacing: -.035em; }
+      .footer-links a { color: #382110; text-decoration: underline; text-decoration-color: #b9ae9f; text-underline-offset: 3px; }
+      .footer-bottom { margin-top: 50px; border-top-color: #d6d0c4; color: #8a7968; }
+      @media (max-width: 760px) {
+        .nav-inner { min-height: 54px; }
+        .brand { font-size: 23px; }
+        .nav-links .download { padding: 8px 11px; }
+        .hero { padding: 48px 0 38px; }
+        h1 { font-size: clamp(44px, 14vw, 68px); }
+        .hero-bottom, .section-head { grid-template-columns: 1fr; }
+        .stage { min-height: 390px; }
+        .section { padding: 55px 0; }
       }
     </style>
   </head>
   <body>
+    <nav class="nav" aria-label="Primary navigation">
+      <div class="wrap nav-inner">
+        <div class="brand"><span class="mark">i</span> inkScript</div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#screenshots">Screenshots</a>
+          <a href="support.html">Support</a>
+          <a class="download" href="#download">Get the app</a>
+        </div>
+      </div>
+    </nav>
+
     <main>
-      <h1>inkScript Help</h1>
-      <p>The purpose of this application is to turn the screen of your elnk device into an interactive paper for a distraction-free writing. By default, there’s no artificial constraints while doing that, this is normal writing, but with eInk.</p>
+      <header class="hero wrap">
+        <div class="eyebrow">Made for iPhone, iPad &amp; Mac</div>
+        <h1>Make space<br>for your <em>words.</em></h1>
+        <div class="hero-bottom">
+          <p class="hero-copy">A quiet, beautifully considered place for your ideas. Add a short description of your application and what makes it special.</p>
+          <div class="actions">
+            <a class="button primary" href="#download">Download on the App Store ↗</a>
+            <a class="button secondary" href="#screenshots">See it in action</a>
+          </div>
+        </div>
+      </header>
 
-<p>The same reason you prefer eInk screen to a LCD screen when reading a book is why you should use elnk when writing, whether it&#39;s a blog post, a poem or a novel.</p>
+      <section class="showcase wrap" aria-label="Application preview">
+        <div class="stage">
+          <div class="orb"></div>
+          <div class="mac-frame" aria-hidden="true">
+            <div class="screen">
+              <div class="sidebar"><div class="side-line"></div><div class="side-line"></div><div class="side-line"></div></div>
+              <div class="editor">
+                <span class="editor-label">NEW DOCUMENT</span>
+                <h3>Your next great idea.</h3>
+                <div class="text-line"></div><div class="text-line"></div><div class="text-line"></div><div class="text-line"></div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-frame" aria-hidden="true">
+            <div class="phone-screen">
+              <span class="editor-label">TODAY</span>
+              <h3>Stay in flow.</h3>
+              <div class="text-line"></div><div class="text-line"></div><div class="text-line"></div>
+            </div>
+          </div>
+          <span class="placeholder-note">Product preview · placeholder</span>
+        </div>
+      </section>
 
-<h2>1) Connecting your ebook device to a host.</h2>
+      <section class="section" id="features">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Why inkScript</p>
+            <h2>Everything you need. Nothing you don’t.</h2>
+          </div>
+          <div class="cards">
+            <article class="card"><span class="card-number">01</span><div><h3>Focus deeply</h3><p>Placeholder copy for your first key feature. Keep it simple, direct, and centered on the benefit.</p></div></article>
+            <article class="card"><span class="card-number">02</span><div><h3>Work anywhere</h3><p>Placeholder copy about seamless use across Apple devices, from a quick note to a long session.</p></div></article>
+            <article class="card"><span class="card-number">03</span><div><h3>Own your ideas</h3><p>Placeholder copy about privacy, reliable storage, exports, or whichever promise matters most.</p></div></article>
+          </div>
+        </div>
+      </section>
 
-<p>When you start editing a text, you will see an IP address at the bottom of the screen; get your ebook device connected to the same network, open that IP address in the ebook&#39;s web browser and you can start editing the text while looking at the screen of the ebook.</p>
+      <section class="section" id="screenshots">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">A closer look</p>
+            <h2>Designed to feel at home on every screen.</h2>
+          </div>
+          <div class="gallery">
+            <div class="shot"><span class="shot-label">Mac experience</span><div class="shot-window" aria-label="Mac screenshot placeholder"></div></div>
+            <div class="shot"><span class="shot-label">iPhone experience</span><div class="shot-window" aria-label="iPhone screenshot placeholder"></div></div>
+          </div>
+        </div>
+      </section>
 
-<p>If you can&#39;t get your ebook connected to the same wi-fi network your phone is connected to, you need to use your phone&#39;s hotspot capability, accessible from the &quot;Settings&quot;, to connect your ebook device to the phone&#39;s shared internet connection. Make sure your mobile internet provider supports this.</p>
-
-<h2>2) A keyboard.</h2>
-
-<p>If you&#39;re running inkScript on a phone, you need to connect a Bluetooth keyboard to it in order to type the text without distractions. The process depends on a particular keyboard. A desktop application which, obviously, doesn&#39;t require any extra keyboard, shares the subscription and text folders with a phone app.</p>
-
-<h2>3) Dark mode.</h2>
-
-<p>To stop the screen of your phone or a desktop application from distracting you, click an icon at the top right of the editor window, and the screen goes dark. Touch the screen of the phone or do a mouse click to leave the dark mode.</p>
-
-<h2>4) Editing the text in inkScript.</h2>
-
-<p>inkScript uses touchscreen capabilities provided by an elnk device browser. You can click the screen once in order to move the cursor to a particular position in a text. Double click selects a word, triple click selects a paragraph, four clicks select a complete text. You can also select a number of the words by sliding the finger from the start of a selection to its end.</p>
-
-<p>A selected text can be copied, cut and pasted. You can also use Undo/ Redo and apply italics/bold markdown syntax to a selection. A status bar at the top of the screen shows the number of the words and characters in your text — you can disable this in your &quot;Options&quot;.</p>
-
-<h2>5) inkScript notebooks.</h2> 
-<p>inkScript helps you organize the texts, so that you don&#39;t just use it to make first drafts, but also to keep editing the texts. You can make folders and put your texts there, duplicate and move texts, pin them for easy access, use search across the notebooks.</p>
-
-<h2>6) Pro version. </h2>
-<p>A free version of the application allows for about 50 pages of writing, after which you go into a read-only mode until you purchase a subscription.</p>
-
-<p>There are other features that you get when you purchase a subscription: </p>
-
-<p>— a wide choice of fonts </p>
-
-<p>— a &quot;flow&quot; mode that disables touchscreen editing capabilities and the use of keyboard arrows; you have to use Command+&quot;A/W/S/D&quot; instead </p>
-
-<p>— Typewriter sounds for better immersion.</p>
+      <section class="section">
+        <div class="wrap support-grid">
+          <div class="support-copy">
+            <p class="kicker">Support</p>
+            <h2>We’re here to help.</h2>
+            <p>Find answers, troubleshooting steps, and a simple way to get in touch on our dedicated support page.</p>
+            <a class="button primary" href="support.html">Visit support ↗</a>
+          </div>
+          <div class="faq">
+            <details><summary>Need a quick answer?</summary><p>The support page includes placeholder FAQs for setup, sync, privacy, and subscriptions.</p></details>
+            <details><summary>Want to contact us?</summary><p>You’ll find a direct support email on the dedicated support page.</p></details>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <footer id="download">
+      <div class="wrap">
+        <div class="footer-main">
+          <h2 class="footer-title">Your ideas deserve a quiet place.</h2>
+          <div class="footer-links">
+            <a href="#">App Store ↗</a>
+            <a href="support.html">Support</a>
+            <a href="privacy.html">Privacy policy</a>
+          </div>
+        </div>
+        <div class="footer-bottom"><span>© 2026 inkScript. All rights reserved.</span><span>Made for the Apple ecosystem.</span></div>
+      </div>
+    </footer>
   </body>
 </html>
-
