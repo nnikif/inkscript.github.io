@@ -213,16 +213,18 @@
       .feature-copy p { margin: 0; color: #626159; font-size: 18px; line-height: 1.65; }
       .feature-media {
         position: relative;
-        min-height: 430px;
-        overflow: hidden;
+        min-height: 0;
         margin: 0;
-        padding: 2px 4px 0;
-        border-radius: var(--radius);
-        background: var(--paper-deep);
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
       }
-      .feature:nth-child(2) .feature-media { grid-column: 1; grid-row: 1; background: var(--lime); }
+      .feature:nth-child(2) .feature-media { grid-column: 1; grid-row: 1; background: transparent; }
       .feature:nth-child(2) .feature-copy { grid-column: 2; }
-      .feature:nth-child(3) .feature-media { background: #ffc7b6; }
+      .feature:nth-child(3) .feature-media { background: transparent; }
+      .feature-media img,
+      .feature-media video { display: block; }
       .feature-screen {
         position: absolute;
         width: calc(100% - 96px);
@@ -326,7 +328,7 @@
         .feature-copy { max-width: none; }
         .feature-number { margin-bottom: 14px; }
         .feature-copy p { font-size: 16px; }
-        .feature-media { min-height: 320px; padding: 34px 24px 0; }
+        .feature-media { min-height: 0; padding: 0; }
         .feature-screen { width: calc(100% - 48px); height: calc(100% - 34px); left: 24px; top: 34px; }
         .shot { min-height: 450px; }
         .footer-main { align-items: start; flex-direction: column; }
@@ -397,7 +399,7 @@
       .feature-list { gap: 58px; }
       .feature-copy h3 { font-family: "Crimson Pro", Georgia, "Times New Roman", serif; font-weight: 400; }
       .feature-copy p { color: #66594d; font-size: 16px; }
-      .feature-media { min-height: 390px; border: 1px solid #cbc2b5; border-radius: 5px; }
+      .feature-media { min-height: 0; border: 0; border-radius: 0; background: transparent; }
       .feature-screen { border-width: 7px; border-color: #574b40; border-radius: 8px 8px 0 0; }
       .gallery { gap: 18px; }
       .shot { min-height: 470px; border: 1px solid #cbc2b5; border-radius: 5px; background: #ebe7dc; }
@@ -422,7 +424,7 @@
         .hero-bottom, .section-head { grid-template-columns: 1fr; }
         .stage { min-height: 390px; }
         .section { padding: 55px 0; }
-        .feature-media { min-height: 320px; }
+        .feature-media { min-height: 0; }
       }
     </style>
   </head>
@@ -510,18 +512,7 @@ Not just a screen to look at, but a screen you can touch to move the cursor, to 
         </div>
       </section>
 
-      <section class="section" id="screenshots">
-        <div class="wrap">
-          <div class="section-head">
-            <p class="kicker">A closer look</p>
-            <h2>Designed to feel at home on every screen.</h2>
-          </div>
-          <div class="gallery">
-            <div class="shot"><span class="shot-label">Mac experience</span><div class="shot-window" aria-label="Mac screenshot placeholder"></div></div>
-            <div class="shot"><span class="shot-label">iPhone experience</span><div class="shot-window" aria-label="iPhone screenshot placeholder"></div></div>
-          </div>
-        </div>
-      </section>
+      
 
       <section class="section">
         <div class="wrap support-grid">
