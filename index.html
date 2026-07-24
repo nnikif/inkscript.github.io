@@ -190,6 +190,69 @@
       .card h3 { margin: 0 0 11px; font-size: 28px; letter-spacing: -.04em; }
       .card p { margin: 0; color: #626159; line-height: 1.55; }
 
+      .feature-list { display: grid; gap: 72px; }
+      .feature {
+        display: grid;
+        grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+        gap: clamp(36px, 7vw, 92px);
+        align-items: center;
+      }
+      .feature-copy { max-width: 430px; }
+      .feature-number {
+        display: block;
+        margin-bottom: 24px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 750;
+        letter-spacing: .08em;
+      }
+      .feature-copy h3 { margin: 0 0 16px; font-size: clamp(30px, 4vw, 46px); letter-spacing: -.045em; }
+      .feature-copy p { margin: 0; color: #626159; font-size: 18px; line-height: 1.65; }
+      .feature-media {
+        position: relative;
+        min-height: 430px;
+        overflow: hidden;
+        margin: 0;
+        padding: 52px 48px 0;
+        border-radius: var(--radius);
+        background: var(--paper-deep);
+      }
+      .feature:nth-child(2) .feature-media { grid-column: 1; grid-row: 1; background: var(--lime); }
+      .feature:nth-child(2) .feature-copy { grid-column: 2; }
+      .feature:nth-child(3) .feature-media { background: #ffc7b6; }
+      .feature-screen {
+        position: absolute;
+        width: calc(100% - 96px);
+        height: calc(100% - 52px);
+        left: 48px;
+        top: 52px;
+        overflow: hidden;
+        border: 8px solid #20201d;
+        border-bottom: 0;
+        border-radius: 22px 22px 0 0;
+        background: #f7f5ef;
+        box-shadow: 0 25px 55px rgba(0,0,0,.18);
+      }
+      .feature-screen::before {
+        content: "";
+        display: block;
+        height: 30px;
+        border-bottom: 1px solid #dedbd3;
+        background: #ebe8e0;
+      }
+      .feature-screen::after {
+        content: attr(data-placeholder);
+        position: absolute;
+        inset: 30px 0 0;
+        display: grid;
+        place-items: center;
+        color: #9a9891;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+
       .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
       .shot {
         position: relative;
@@ -251,6 +314,17 @@
         .section-head { margin-bottom: 42px; }
         .cards, .gallery { grid-template-columns: 1fr; }
         .card { min-height: 250px; }
+        .feature-list { gap: 52px; }
+        .feature { grid-template-columns: 1fr; gap: 24px; }
+        .feature-copy, .feature:nth-child(2) .feature-copy, .feature:nth-child(2) .feature-media {
+          grid-column: auto;
+          grid-row: auto;
+        }
+        .feature-copy { max-width: none; }
+        .feature-number { margin-bottom: 14px; }
+        .feature-copy p { font-size: 16px; }
+        .feature-media { min-height: 320px; padding: 34px 24px 0; }
+        .feature-screen { width: calc(100% - 48px); height: calc(100% - 34px); left: 24px; top: 34px; }
         .shot { min-height: 450px; }
         .footer-main { align-items: start; flex-direction: column; }
         .footer-links { text-align: left; }
@@ -317,6 +391,11 @@
       .card:nth-child(2), .card:nth-child(3) { background: #fff; }
       .card h3 { font-family: Georgia, "Times New Roman", serif; font-size: 24px; font-weight: 400; }
       .card p { color: #66594d; font-size: 14px; }
+      .feature-list { gap: 58px; }
+      .feature-copy h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
+      .feature-copy p { color: #66594d; font-size: 16px; }
+      .feature-media { min-height: 390px; border: 1px solid #cbc2b5; border-radius: 5px; }
+      .feature-screen { border-width: 7px; border-color: #574b40; border-radius: 8px 8px 0 0; }
       .gallery { gap: 18px; }
       .shot { min-height: 470px; border: 1px solid #cbc2b5; border-radius: 5px; background: #ebe7dc; }
       .shot:nth-child(2) { background: #e3ddd1; }
@@ -340,6 +419,7 @@
         .hero-bottom, .section-head { grid-template-columns: 1fr; }
         .stage { min-height: 390px; }
         .section { padding: 55px 0; }
+        .feature-media { min-height: 320px; }
       }
     </style>
   </head>
@@ -386,15 +466,37 @@
             <p class="kicker">Why inkScript</p>
             <h2>Everything you need. Nothing you don’t.</h2>
           </div>
-          <div class="cards">
-            <article class="card"><span class="card-number">01</span><div><h3>Focus deeply</h3><p>Placeholder copy for your first key feature. Keep it simple, direct, and centered on the benefit.</p></div></article>
-            <article class="card"><span class="card-number">02</span><div><h3>Work anywhere</h3><p>Placeholder copy about seamless use across Apple devices, from a quick note to a long session.</p></div></article>
-            <article class="card"><span class="card-number">03</span><div><h3>Own your ideas</h3><p>Placeholder copy about privacy, reliable storage, exports, or whichever promise matters most.</p></div></article>
-          </div>
-          <div class="cards">
-            <article class="card"><span class="card-number">01</span><div><h3>Focus deeply</h3><p>Placeholder copy for your first key feature. Keep it simple, direct, and centered on the benefit.</p></div></article>
-            <article class="card"><span class="card-number">02</span><div><h3>Work anywhere</h3><p>Placeholder copy about seamless use across Apple devices, from a quick note to a long session.</p></div></article>
-            <article class="card"><span class="card-number">03</span><div><h3>Own your ideas</h3><p>Placeholder copy about privacy, reliable storage, exports, or whichever promise matters most.</p></div></article>
+          <div class="feature-list">
+            <article class="feature">
+              <div class="feature-copy">
+                <span class="feature-number">01</span>
+                <h3>Focus deeply</h3>
+                <p>Keep your attention on the words in front of you, with a quiet writing space made to feel as natural as reading on eInk.</p>
+              </div>
+              <figure class="feature-media" aria-label="Screenshot illustrating focused writing">
+                <div class="feature-screen" data-placeholder="Add focus screenshot"></div>
+              </figure>
+            </article>
+            <article class="feature">
+              <div class="feature-copy">
+                <span class="feature-number">02</span>
+                <h3>Work anywhere</h3>
+                <p>Move from a quick thought on iPhone to a longer writing session on iPad or Mac without changing the way you work.</p>
+              </div>
+              <figure class="feature-media" aria-label="Screenshot illustrating cross-device writing">
+                <div class="feature-screen" data-placeholder="Add devices screenshot"></div>
+              </figure>
+            </article>
+            <article class="feature">
+              <div class="feature-copy">
+                <span class="feature-number">03</span>
+                <h3>Own your ideas</h3>
+                <p>Your writing stays yours, with dependable storage and a straightforward path to taking your words wherever they need to go.</p>
+              </div>
+              <figure class="feature-media" aria-label="Screenshot illustrating writing and export">
+                <div class="feature-screen" data-placeholder="Add export screenshot"></div>
+              </figure>
+            </article>
           </div>
         </div>
       </section>
