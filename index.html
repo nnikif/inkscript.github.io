@@ -7,6 +7,9 @@
     <meta name="theme-color" content="#f5f3ee">
     <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
     <title>inkScript — Make space for your words</title>
     <style>
       :root {
@@ -26,7 +29,7 @@
         margin: 0;
         background: var(--paper);
         color: var(--ink);
-        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+        font-family: "Crimson Pro", Georgia, "Times New Roman", serif;
         -webkit-font-smoothing: antialiased;
       }
       a { color: inherit; }
@@ -57,7 +60,7 @@
         border-radius: 10px;
         background: var(--ink);
         color: white;
-        font-family: Georgia, serif;
+        font-family: "Crimson Pro", Georgia, serif;
         font-size: 20px;
         font-style: italic;
       }
@@ -87,7 +90,7 @@
         letter-spacing: -.075em;
         font-weight: 780;
       }
-      h1 em { color: var(--accent); font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
+      h1 em { color: var(--accent); font-family: "Crimson Pro", Georgia, "Times New Roman", serif; font-weight: 400; }
       .hero-bottom {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -157,7 +160,7 @@
       .side-line:nth-child(3) { width: 88%; }
       .editor { padding: 11% 12%; }
       .editor-label { color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: .1em; }
-      .editor h3 { margin: 17px 0 24px; font-family: Georgia, serif; font-size: clamp(27px, 4vw, 52px); font-weight: 400; letter-spacing: -.04em; }
+      .editor h3 { margin: 17px 0 24px; font-family: "Crimson Pro", Georgia, serif; font-size: clamp(27px, 4vw, 52px); font-weight: 400; letter-spacing: -.04em; }
       .text-line { height: 8px; margin-bottom: 12px; border-radius: 4px; background: #d6d3cb; }
       .text-line:nth-child(2n) { width: 89%; }
       .text-line:nth-child(3n) { width: 74%; }
@@ -175,7 +178,7 @@
         transform: rotate(7deg);
       }
       .phone-screen { height: 100%; padding: 55px 24px; border-radius: 28px; background: #ece8de; }
-      .phone-screen h3 { margin: 26px 0; font-family: Georgia, serif; font-size: 28px; font-weight: 400; }
+      .phone-screen h3 { margin: 26px 0; font-family: "Crimson Pro", Georgia, serif; font-size: 28px; font-weight: 400; }
       .placeholder-note { position: absolute; left: 34px; bottom: 30px; color: #aaa89f; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
 
       .section { padding: 120px 0; border-top: 1px solid var(--line); }
@@ -213,7 +216,7 @@
         min-height: 430px;
         overflow: hidden;
         margin: 0;
-        padding: 52px 48px 0;
+        padding: 2px 4px 0;
         border-radius: var(--radius);
         background: var(--paper-deep);
       }
@@ -348,11 +351,11 @@
         --lime: #d6e8d8;
         --radius: 5px;
       }
-      body { background: #fff; color: var(--ink); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+      body { background: #fff; color: var(--ink); font-family: "Crimson Pro", Georgia, "Times New Roman", serif; }
       .wrap { width: min(1100px, calc(100% - 36px)); }
       .nav { position: static; background: #f4f1ea; border-bottom: 1px solid #d6d0c4; box-shadow: 0 1px 2px rgba(0,0,0,.08); backdrop-filter: none; }
       .nav-inner { min-height: 58px; }
-      .brand { font-family: Georgia, "Times New Roman", serif; font-size: 27px; font-weight: 400; letter-spacing: -.035em; }
+      .brand { font-family: "Crimson Pro", Georgia, "Times New Roman", serif; font-size: 27px; font-weight: 400; letter-spacing: -.035em; }
       .mark { width: 31px; height: 31px; border-radius: 3px; background: #382110; font-size: 19px; }
       img.mark { display: block; object-fit: cover; }
       .nav-links { gap: 4px; }
@@ -362,11 +365,11 @@
       .hero { padding: 64px 0 54px; overflow: visible; }
       .eyebrow { margin-bottom: 16px; color: #8a7968; font-size: 12px; }
       .eyebrow::before { background: #409d69; }
-      h1 { max-width: 780px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(50px, 7vw, 82px); line-height: 1.03; letter-spacing: -.045em; font-weight: 400; }
+      h1 { max-width: 780px; font-family: "Crimson Pro", Georgia, "Times New Roman", serif; font-size: clamp(50px, 7vw, 82px); line-height: 1.03; letter-spacing: -.045em; font-weight: 400; }
       h1 br { display: none; }
       h1 em { color: #382110; }
       .hero-bottom { grid-template-columns: 1.25fr .75fr; margin-top: 28px; }
-      .hero-copy { color: #66594d; font-family: Georgia, "Times New Roman", serif; font-size: 19px; }
+      .hero-copy { color: #66594d; font-family: "Crimson Pro", Georgia, "Times New Roman", serif; font-size: 19px; }
       .button { min-height: 40px; padding: 0 17px; border: 1px solid #ccc3b5; border-radius: 3px; font-size: 14px; font-weight: 400; }
       .button.primary { background: #409d69; border-color: #388c5d; color: white; }
       .button.secondary { background: #f7f5f0; }
@@ -384,15 +387,15 @@
       .section:nth-of-type(even) { background: #f4f1ea; }
       .section-head { grid-template-columns: 180px 1fr; gap: 35px; margin-bottom: 38px; }
       .kicker { color: #8a7968; }
-      h2, .footer-title { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
+      h2, .footer-title { font-family: "Crimson Pro", Georgia, "Times New Roman", serif; font-weight: 400; }
       h2 { max-width: 690px; font-size: clamp(36px, 5vw, 54px); line-height: 1.08; letter-spacing: -.035em; }
       .cards { gap: 14px; }
       .card { min-height: 240px; padding: 24px; border: 1px solid #d8d0c4; border-radius: 5px; background: #fff; }
       .card:nth-child(2), .card:nth-child(3) { background: #fff; }
-      .card h3 { font-family: Georgia, "Times New Roman", serif; font-size: 24px; font-weight: 400; }
+      .card h3 { font-family: "Crimson Pro", Georgia, "Times New Roman", serif; font-size: 24px; font-weight: 400; }
       .card p { color: #66594d; font-size: 14px; }
       .feature-list { gap: 58px; }
-      .feature-copy h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
+      .feature-copy h3 { font-family: "Crimson Pro", Georgia, "Times New Roman", serif; font-weight: 400; }
       .feature-copy p { color: #66594d; font-size: 16px; }
       .feature-media { min-height: 390px; border: 1px solid #cbc2b5; border-radius: 5px; }
       .feature-screen { border-width: 7px; border-color: #574b40; border-radius: 8px 8px 0 0; }
@@ -405,7 +408,7 @@
       .support-copy p, details p { color: #66594d; }
       .faq { border-top-color: #d8d0c4; }
       details { border-bottom-color: #d8d0c4; }
-      summary { color: #382110; font-family: Georgia, "Times New Roman", serif; }
+      summary { color: #382110; font-family: "Crimson Pro", Georgia, "Times New Roman", serif; }
       footer { padding: 48px 0 25px; background: #f4f1ea; color: #382110; border-top: 1px solid #d6d0c4; }
       .footer-title { max-width: 600px; font-size: clamp(38px, 5vw, 60px); line-height: 1.05; letter-spacing: -.035em; }
       .footer-links a { color: #382110; text-decoration: underline; text-decoration-color: #b9ae9f; text-underline-offset: 3px; }
@@ -439,7 +442,7 @@
     <main>
       <header class="hero wrap">
         <div class="eyebrow">Made for iPhone, iPad &amp; Mac</div>
-        <h3>With inkScript, you turn your e-book into a screen for a distraction-free writing application. </h3>
+        <h3>A perfectly simple writer's tool </h3>
         <div class="hero-bottom">
           <p class="hero-copy">If you read books using your Kindle or a similar eInk device, you know how different it feels from looking at a screen of a phone or a computer. 
 <em>But why just read, why not write?</em> </p>
@@ -452,49 +455,55 @@
       <section class="showcase wrap" aria-label="Application preview">
         <div class="stage">
 
-          
+
           <video width="100%" height="auto" autoplay loop muted playsinline>
             <source src="./assets/inkScriptDemo1.mp4" type="video/mp4">
-          </video>    
-          
+          </video>
+
           </div>
       </section>
 
       <section class="section" id="features">
         <div class="wrap">
-          <div class="section-head">
-            <p class="kicker">Why inkScript</p>
-            <h2>Everything you need. Nothing you don’t.</h2>
-          </div>
+         
           <div class="feature-list">
             <article class="feature">
               <div class="feature-copy">
-                <span class="feature-number">01</span>
-                <h3>Focus deeply</h3>
-                <p>Keep your attention on the words in front of you, with a quiet writing space made to feel as natural as reading on eInk.</p>
+                <h3>Enter the flow</h3>
+
+
+                <p>With inkScript, you turn your e-book into a screen for a distraction-free writing application.
+Not just a screen to look at, but a screen you can touch to move the cursor, to select a piece of the text for copy-pasting etc. </p>
+                      <p>You can also choose your font, turn on the “flow mode” to write a first draft with limited editing, you can even make it sound like a typewriter.</p>
               </div>
               <figure class="feature-media" aria-label="Screenshot illustrating focused writing">
-                <div class="feature-screen" data-placeholder="Add focus screenshot"></div>
+                <div  >
+                  <video width="100%" height="auto" autoplay loop muted playsinline>
+            <source src="./assets/inkScriptScreenCapture.mp4" type="video/mp4">
+          </video>
+                </div>
               </figure>
             </article>
             <article class="feature">
               <div class="feature-copy">
-                <span class="feature-number">02</span>
                 <h3>Work anywhere</h3>
-                <p>Move from a quick thought on iPhone to a longer writing session on iPad or Mac without changing the way you work.</p>
+                <p>Your text is stored on your phone or your laptop, but you will be able to complete a text without looking at their screens once.
+                  An iOS version requires a Bluetooth keyboard to be connected to your device, but you can also run this on Mac: just click a button to have the laptop screen go dark while you write so it doesn’t distract you. The texts you write are shared across the devices.</p>
+                <p>
               </div>
               <figure class="feature-media" aria-label="Screenshot illustrating cross-device writing">
-                <div class="feature-screen" data-placeholder="Add devices screenshot"></div>
+              
+                  <img width="100%" height="auto" src="./assets/writeOnMac.jpeg">
+                
               </figure>
             </article>
             <article class="feature">
               <div class="feature-copy">
-                <span class="feature-number">03</span>
-                <h3>Own your ideas</h3>
-                <p>Your writing stays yours, with dependable storage and a straightforward path to taking your words wherever they need to go.</p>
+                <h3>Keep working on your drafts</h3>
+                <p>inkScript also helps you organize your texts into folders, pin the drafts you are currently working on and search across the texts.</p>
               </div>
               <figure class="feature-media" aria-label="Screenshot illustrating writing and export">
-                <div class="feature-screen" data-placeholder="Add export screenshot"></div>
+                <img width="80%" height="auto" src="./assets/inkScriptFolders.jpeg">
               </figure>
             </article>
           </div>
