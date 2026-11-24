@@ -116,6 +116,14 @@
       .button:hover { transform: translateY(-2px); }
       .button.primary { background: var(--ink); color: white; border-color: var(--ink); }
       .button.secondary:hover { background: white; }
+      .app-store-link {
+        display: inline-flex;
+        border-radius: 9px;
+        transition: transform .2s ease, opacity .2s ease;
+      }
+      .app-store-link:hover { transform: translateY(-2px); opacity: .9; }
+      .app-store-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+      .app-store-badge { display: block; width: 216px; height: auto; }
 
       .showcase { padding: 24px 0 120px; }
       .stage {
@@ -339,7 +347,7 @@
 
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
-        .button { transition: none; }
+        .button, .app-store-link { transition: none; }
       }
     </style>
     <style>
@@ -449,7 +457,9 @@
           <p class="hero-copy">If you read books using your Kindle or a similar eInk device, you know how different it feels from looking at a screen of a phone or a computer. 
 <em>But why just read? Why not write?</em> </p>
           <div class="actions">
-            <a class="button primary" href="https://apps.apple.com/app/inkscript/id6771820349" target="_blank">Download on the App Store ↗</a>
+            <a class="app-store-link" href="https://apps.apple.com/app/inkscript/id6771820349" target="_blank" rel="noopener noreferrer" aria-label="Download inkScript on the App Store">
+              <img class="app-store-badge" src="assets/download-on-app-store.svg" alt="Download on the App Store" width="270" height="80">
+            </a>
           </div>
         </div>
       </header>

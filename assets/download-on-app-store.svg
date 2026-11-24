@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 80" role="img" aria-labelledby="title desc">
+  <title id="title">Download on the App Store</title>
+  <desc id="desc">Black App Store download badge with the Apple logo</desc>
+  <rect x="1" y="1" width="268" height="78" rx="9" fill="#000" stroke="#a6a6a6" stroke-width="2"/>
+  <g transform="translate(15 9) scale(.8)" fill="#fff">
+    <path d="M48.2 34.6c-.2-8.1 6.6-12 6.9-12.2-3.8-5.5-9.6-6.3-11.7-6.4-4.9-.5-9.7 2.9-12.2 2.9-2.6 0-6.5-2.8-10.7-2.7-5.5.1-10.7 3.2-13.5 8-5.8 10.1-1.5 25 4.1 33.2 2.8 4 6.1 8.5 10.5 8.3 4.2-.2 5.8-2.7 10.9-2.7 5 0 6.4 2.7 10.9 2.6 4.6-.1 7.5-4 10.2-8 3.2-4.6 4.5-9.1 4.6-9.3-.1 0-8.8-3.4-8.9-13.3zM40.2 10.8c2.2-2.8 3.7-6.6 3.3-10.3-3.2.1-7.2 2.2-9.5 4.9-2 2.3-3.8 6.2-3.3 9.8 3.6.3 7.2-1.8 9.5-4.4z"/>
+  </g>
+  <g fill="#fff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif">
+    <text x="73" y="27" font-size="15" letter-spacing=".2">Download on the</text>
+    <text x="71" y="61" font-size="35" font-weight="500" letter-spacing="-.8">App Store</text>
+  </g>
+</svg>
